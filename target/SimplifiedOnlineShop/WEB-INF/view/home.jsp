@@ -14,5 +14,7 @@
     <a href="login">Login</a>
     <br>
     <a href="user/register">Register</a>
+    <br>
+
 </body>
 </html>

@@ -18,7 +18,6 @@
         Email: <form:input path="email"/><br>
         Password: <form:password path="password"/><br>
         <input type="submit" value="submit">
-
     </form:form>
 </body>
 </html>

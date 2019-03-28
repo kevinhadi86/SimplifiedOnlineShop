@@ -1,24 +1,10 @@
 package simplified.Online.Shop.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-@Entity
-@Table(name = "user")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-    @Column(name = "name")
-    @NotNull
     private String name;
-    @Column(name = "email")
-    @NotNull
     private String email;
-    @Column(name = "password")
-    @NotNull
     private String password;
 
     public User() {

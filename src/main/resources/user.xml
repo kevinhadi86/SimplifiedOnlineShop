@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="user">
+
+    <typeAlias alias="User" type="simplified.Online.Shop.dto.User"/>
+
+    <resultMap id="userResultMap" class="USER">
+        <result property="email" column="email"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="id" column="id"/>
+    </resultMap>
+
+    <select id="getUser" parameterClass="User" resultMap="userResultMap">
+	  SELECT *
+      FROM user
+	  WHERE email LIKE #email# AND password LIKE #password#;
+	</select>
+    <insert id="createUser" parameterClass="User">
+      INSERT INTO user (name,email,password)
+      VALUES(#name#,#email#,#password#);
+    </insert>
+    <update id="updateUser" parameterClass="User">
+      UPDATE user
+      SET name = #name#, email = #email#, password = #password#
+      WHERE id=#id#;
+    </update>
+
+
+</sqlMap>

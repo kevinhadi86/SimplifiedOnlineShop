@@ -12,11 +12,10 @@
     <title>Login</title>
 </head>
 <body>
-<
-    <form method="POST" action="login/process">
-        Email: <input name="email"/><br>
-        Password: <input name="password"/>
-        <input type="submit"/>
-    </form>
+    <form:form method="POST" action="login/process" modelAttribute="user">
+        Email: <form:input path="email" /><br>
+        Password: <form:input path="password"/>
+        <input type="submit" value="submit"/>
+    </form:form>
 </body>
 </html>

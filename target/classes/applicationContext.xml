@@ -19,14 +19,18 @@
         </property>
     </bean>
 
+    <bean class="simplified.Online.Shop.dto.User" id="user" scope="singleton">
+    </bean>
     <bean class="simplified.Online.Shop.dao.UserDAOImpl" id="userDAO">
         <property name="dataSource" ref="dataSource"/>
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
 
-    <bean class="simplified.Online.Shop.service.LoginServiceImpl" id="loginService">
+    <bean class="simplified.Online.Shop.service.UserServiceImpl" id="userService">
         <property name="userDAO" ref="userDAO"/>
     </bean>
+
+
 
 
 

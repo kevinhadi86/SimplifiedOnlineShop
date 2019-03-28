@@ -12,5 +12,10 @@
 </head>
 <body>
     <h1>DashBoard</h1>
+    <div>
+        <h2>Profile</h2>
+        <a href="user/edit">Edit Profile</a>
+    </div>
+
 </body>
 </html>

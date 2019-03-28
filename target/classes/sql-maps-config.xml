@@ -5,9 +5,6 @@
 <sqlMapConfig>
 
     <settings useStatementNamespaces="true"/>
-    <sqlMap resource="environment.xml"/>
-    <sqlMap resource="merchant.xml"/>
-    <sqlMap resource="oauthinfo.xml"/>
-    <sqlMap resource="login.xml"/>
+    <sqlMap resource="user.xml"/>
 
 </sqlMapConfig>
