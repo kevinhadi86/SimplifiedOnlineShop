@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import simplified.Online.Shop.dto.User;
+import simplified.Online.Shop.service.ProductService;
 import simplified.Online.Shop.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ public class HomeController {
     UserService userService;
     @Autowired
     User user;
+    @Autowired
+    ProductService productService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showHome(){
@@ -47,9 +50,14 @@ public class HomeController {
     }
 
     @RequestMapping("/dashboard")
-    public String showDashboard(){
-        System.out.println("pas di dashboard: "+user);
+    public String showDashboard(Model model){
+        model.addAttribute("products",productService.getAllOthersProduct(user.getId()));
         return "dashboard";
+    }
+    @RequestMapping("/myProduct")
+    public String showMyProduct(Model model){
+        model.addAttribute("products",productService.getAllMyProduct(user.getId()));
+        return "myProduct";
     }
 
 

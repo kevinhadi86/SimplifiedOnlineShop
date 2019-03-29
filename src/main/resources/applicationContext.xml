@@ -19,21 +19,29 @@
         </property>
     </bean>
 
-    <bean class="simplified.Online.Shop.dto.User" id="user" scope="singleton">
-    </bean>
+    <!--DTO-->
+    <bean class="simplified.Online.Shop.dto.User" id="user" scope="singleton"></bean>
+    <bean class="simplified.Online.Shop.dto.Product" id="product" scope="singleton"></bean>
+
+    <!--DAO-->
     <bean class="simplified.Online.Shop.dao.UserDAOImpl" id="userDAO">
         <property name="dataSource" ref="dataSource"/>
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
+    <bean class="simplified.Online.Shop.dao.ProductDAOImpl" id="productDAO">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
 
+    <!--Service-->
     <bean class="simplified.Online.Shop.service.UserServiceImpl" id="userService">
         <property name="userDAO" ref="userDAO"/>
     </bean>
+    <bean class="simplified.Online.Shop.service.ProductServiceImpl" id="productService">
+        <property name="productDAO" ref="productDAO"/>
+    </bean>
 
-
-
-
-
+    <!--Connection to Database-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.db.driverClassName}"/>
         <property name="url" value="${jdbc.db.url}"/>

@@ -19,13 +19,23 @@ public class ProductDAOImpl extends SqlMapClientDaoSupport implements ProductDAO
     }
 
     @Override
-    public List<Product> getAllProduct() {
+    public List<Product> getAllMyProduct(int id) {
         try {
-            return (List<Product>) getSqlMapClientTemplate().queryForList("product.getAllProduct");
+            return (List<Product>) getSqlMapClientTemplate().queryForList("product.getAllMyProduct",id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;    }
+
+    @Override
+    public List<Product> getAllOthersProduct(int id) {
+        try {
+            return (List<Product>) getSqlMapClientTemplate().queryForList("product.getAllOthersProduct",id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public Product getOneProduct(int id) {

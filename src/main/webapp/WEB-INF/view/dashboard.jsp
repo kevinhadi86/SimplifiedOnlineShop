@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kevinhadinata
@@ -15,6 +16,42 @@
     <div>
         <h2>Profile</h2>
         <a href="user/edit">Edit Profile</a>
+    </div>
+    <hr>
+    <div>
+        <h2>Other's Product</h2>
+        <a href="/product/form"><button>Add Product</button></a>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:set var="count" value="${0}"/>
+                <c:forEach items="${products}" var="product">
+                    <tr>
+                        <td>${count+=1}</td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                        <td>${product.stock}</td>
+                        <td>
+                            <a href="product/${product.id}"><button>View</button></a>
+                            <%--bikin if untuk cek dia pemilik barangnya bukan?--%>
+                            <a href="product/update/${product.id}"><button>Update</button></a>
+                            <a href="product/delete/${product.id}"><button>Delete</button></a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
     </div>
 
 </body>
