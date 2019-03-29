@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="product">
+
+    <typeAlias alias="Product" type="simplified.Online.Shop.dto.Product"/>
+
+    <resultMap id="productResultMap" class="PRODUCT">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="owner" column="owner"/>
+    </resultMap>
+
+    <select id="getAllMyProduct" parameterClass="java.lang.Integer" resultMap="productResultMap">
+	  SELECT *
+      FROM product
+	  WHERE owner = #id#;
+	</select>
+    <select id="getAllOthersProduct" parameterClass="java.lang.Integer" resultMap="productResultMap">
+	  SELECT *
+      FROM product
+	  WHERE owner != #id#;
+	</select>
+    <select id="getOneProduct" parameterClass="java.lang.Integer" resultMap="productResultMap">
+	  SELECT *
+      FROM product
+	  WHERE id = #id#;
+	</select>
+    <insert id="createProduct" parameterClass="User">
+      INSERT INTO product (name,description,price,stock,owner)
+      VALUES(#name#,#description#,#price#,#stock#,#owner#);
+    </insert>
+    <update id="updateProduct" parameterClass="User">
+      UPDATE user
+      SET name = #name#, description = #description#, price = #price#, stock = #stock#
+      WHERE id=#id#;
+    </update>
+    <delete id="deleteProduct" parameterClass="java.lang.Integer">
+		  DELETE FROM product
+		  WHERE id LIKE #id#;
+	</delete>
+
+
+</sqlMap>
