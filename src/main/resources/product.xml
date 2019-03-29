@@ -28,12 +28,12 @@
       FROM product
 	  WHERE id = #id#;
 	</select>
-    <insert id="createProduct" parameterClass="User">
+    <insert id="createProduct" parameterClass="Product">
       INSERT INTO product (name,description,price,stock,owner)
       VALUES(#name#,#description#,#price#,#stock#,#owner#);
     </insert>
-    <update id="updateProduct" parameterClass="User">
-      UPDATE user
+    <update id="updateProduct" parameterClass="Product">
+      UPDATE product
       SET name = #name#, description = #description#, price = #price#, stock = #stock#
       WHERE id=#id#;
     </update>

@@ -27,6 +27,16 @@ public class UserDAOImpl extends SqlMapClientDaoSupport implements UserDAO {
     }
 
     @Override
+    public User getUserById(int id) {
+        try {
+            return (User) getSqlMapClientTemplate().queryForObject("user.getUserById", id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
     public void createUser(User user) {
         try {
             getSqlMapClientTemplate().insert("user.createUser", user);

@@ -7,15 +7,17 @@ public class Product {
     private String description;
     private int price;
     private int stock;
+    private String owner;
 
     public Product() {
     }
 
-    public Product(String name, String description, int price, int stock) {
+    public Product(String name, String description, int price, int stock, String owner) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
+        this.owner = owner;
     }
 
     /**
@@ -106,5 +108,35 @@ public class Product {
      */
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    /**
+     * Getter method for property owner.
+     *
+     * @return property value of owner
+     **/
+    public String getOwner() {
+        return owner;
+    }
+
+    /**
+     * Setter method for property owner.
+     *
+     * @param owner value to be assigned to property owner
+     */
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", owner='" + owner + '\'' +
+                '}';
     }
 }

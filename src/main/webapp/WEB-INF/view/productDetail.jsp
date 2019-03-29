@@ -11,6 +11,14 @@
     <title>Product Detail</title>
 </head>
 <body>
-
+    <div>
+        <h1>${product.name}</h1>
+        <h5>${product.description}</h5>
+        <div>
+            Price: ${product.price}
+            Stock: ${product.stock}
+            Owner: ${product.owner}
+        </div>
+    </div>
 </body>
 </html>

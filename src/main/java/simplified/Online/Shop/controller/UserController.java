@@ -23,7 +23,6 @@ public class UserController {
 
     @RequestMapping("/register")
     public String showRegister(Model model){
-        System.out.println(user.getEmail());
         model.addAttribute("user",user);
         return "register";
     }
@@ -40,20 +39,15 @@ public class UserController {
     public String showEditProfile(Model model, HttpServletRequest request){
         HttpSession session = request.getSession();
         user = (User) session.getAttribute("user");
-        System.out.println("pas di edit1 :"+user);
         model.addAttribute("user",user);
-        System.out.println("pas di edit2 :"+user.getId());
         return "editProfile";
     }
     @RequestMapping("/edit/process")
     public String processEditProfile(@ModelAttribute("user") User data, Model model){
-        System.out.println("pas lagi proses1 : "+user.getName());
         user.setName(data.getName());
         user.setEmail(data.getEmail());
         user.setPassword(data.getPassword());
-        System.out.println("pas lagi proses2 : "+user.getName());
         userService.updateUser(user);
-        System.out.println(user.getEmail());
         return "redirect:/dashboard";
     }
 

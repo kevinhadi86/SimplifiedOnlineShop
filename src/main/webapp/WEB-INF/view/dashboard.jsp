@@ -20,7 +20,7 @@
     <hr>
     <div>
         <h2>Other's Product</h2>
-        <a href="/product/form"><button>Add Product</button></a>
+        <a href="product/new/form"><button>Add Product</button></a>
         <table>
             <thead>
                 <tr>
@@ -43,15 +43,11 @@
                         <td>${product.stock}</td>
                         <td>
                             <a href="product/${product.id}"><button>View</button></a>
-                            <%--bikin if untuk cek dia pemilik barangnya bukan?--%>
-                            <a href="product/update/${product.id}"><button>Update</button></a>
-                            <a href="product/delete/${product.id}"><button>Delete</button></a>
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-
     </div>
 
 </body>
