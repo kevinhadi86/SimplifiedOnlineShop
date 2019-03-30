@@ -15,12 +15,13 @@
     <h1>DashBoard</h1>
     <div>
         <h2>Profile</h2>
-        <a href="user/edit">Edit Profile</a>
+        <a href="user/edit">Edit Profile</a><br>
+        <a href="myProduct">My Product</a>
     </div>
     <hr>
     <div>
         <h2>Other's Product</h2>
-        <a href="product/new/form"><button>Add Product</button></a>
+        <a href="product/add/form"><button>Add Product</button></a>
         <table>
             <thead>
                 <tr>
@@ -36,7 +37,7 @@
                 <c:set var="count" value="${0}"/>
                 <c:forEach items="${products}" var="product">
                     <tr>
-                        <td>${count+=1}</td>
+                        <td>${count=count+1}</td>
                         <td>${product.name}</td>
                         <td>${product.description}</td>
                         <td>${product.price}</td>

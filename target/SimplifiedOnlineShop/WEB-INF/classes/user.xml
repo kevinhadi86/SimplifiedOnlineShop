@@ -16,7 +16,7 @@
       FROM user
 	  WHERE email LIKE #email# AND password LIKE #password#;
 	</select>
-    <select id="getUserById" parameterClass="java.lang.Integer" resultMap="userResultMap">
+    <select id="getUserById" parameterClass="Integer" resultMap="userResultMap">
 	  SELECT *
       FROM user
 	  WHERE id = #id#;

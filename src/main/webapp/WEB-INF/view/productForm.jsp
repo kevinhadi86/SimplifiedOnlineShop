@@ -12,12 +12,12 @@
     <title>Product Form</title>
 </head>
 <body>
-    <form:form method="post" modelAttribute="product" action="../add">
-        Name: <form:input path="name"/><br>
-        Description: <form:input path="description"/><br>
-        Price: <form:input path="price"/><br>
-        Stock: <form:input path="stock"/><br>
-        <input type="submit" value="submit">
-    </form:form>
+<form:form method="post" modelAttribute="product" action="../add">
+    Name: <form:input path="name"/><br>
+    Description: <form:input path="description"/><br>
+    Price: <form:input path="price"/><br>
+    Stock: <form:input path="stock"/><br>
+    <input type="submit" value="submit">
+</form:form>
 </body>
 </html>

@@ -57,7 +57,10 @@ public class HomeController {
         return "dashboard";
     }
     @RequestMapping("/myProduct")
-    public String showMyProduct(Model model){
+    public String showMyProduct(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        System.out.println(user.getId());
         model.addAttribute("products",productService.getAllMyProduct(user.getId()));
         return "myProduct";
     }

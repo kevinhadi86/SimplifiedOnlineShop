@@ -7,12 +7,12 @@ public class Product {
     private String description;
     private int price;
     private int stock;
-    private String owner;
+    private int owner;
 
     public Product() {
     }
 
-    public Product(String name, String description, int price, int stock, String owner) {
+    public Product(String name, String description, int price, int stock, int owner) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -115,7 +115,7 @@ public class Product {
      *
      * @return property value of owner
      **/
-    public String getOwner() {
+    public int getOwner() {
         return owner;
     }
 
@@ -124,7 +124,7 @@ public class Product {
      *
      * @param owner value to be assigned to property owner
      */
-    public void setOwner(String owner) {
+    public void setOwner(int owner) {
         this.owner = owner;
     }
 

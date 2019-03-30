@@ -26,26 +26,49 @@ public class ProductController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String showDetailProduct(@PathVariable int id, Model model){
-        model.addAttribute("product",productService.getOneProduct(id));
+        Product product = productService.getOneProduct(id);
+        model.addAttribute("product",product);
+        model.addAttribute("productOwner",userService.getUserById(product.getOwner()).getName());
         return "productDetail";
     }
-    @RequestMapping("/new/form")
-    public String showNewProductForm(Model model){
+    @RequestMapping("/add/form")
+    public String showAddProductForm(Model model){
+        product=new Product();
         model.addAttribute("product",product);
         return "productForm";
     }
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addNewProduct(@ModelAttribute("product") Product data, HttpServletRequest request){
+    public String addProduct(@ModelAttribute("product") Product data, HttpServletRequest request){
         HttpSession session = request.getSession();
         product=data;
         User user = (User) session.getAttribute("user");
-        System.out.println(user.getId());
-        product.setOwner(userService.getUserById(user.getId()).getName());
-        System.out.println("hehehehe");
+        product.setOwner(user.getId());
         productService.createProduct(product);
         System.out.println(product.toString());
+        return "redirect:/myProduct";
+    }
+    @RequestMapping("/update/form/{id}")
+    public String showUpdateProductForm(@PathVariable int id, Model model){
+//        boleh nih nanti dibikin checknya, dia ada ga productnya, pake method baru jadi dia bisa hidden urlnya ntr
+        product=productService.getOneProduct(id);
+        model.addAttribute("product",product);
+        return "productUpdateForm";
+    }
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String updateProduct(@ModelAttribute("product") Product data){
+        product.setName(data.getName());
+        product.setDescription(data.getDescription());
+        product.setPrice(data.getPrice());
+        product.setStock(data.getStock());
+        productService.updateProduct(product);
+        System.out.println(product.toString());
+        return "redirect:/myProduct";
+    }
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable int id){
+        productService.deleteProduct(id);
         return "redirect:/myProduct";
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="transaction">
+
+    <typeAlias alias="Transaction" type="simplified.Online.Shop.dto.Transaction"/>
+
+    <resultMap id="transactionResultMap" class="PRODUCT">
+        <result property="id" column="id"/>
+        <result property="totalPrice" column="total_price"/>
+        <result property="buyerId" column="buyer_id"/>
+    </resultMap>
+
+    <select id="getAllMyProduct" parameterClass="Integer" resultMap="productResultMap">
+	  SELECT *
+      FROM product
+	  WHERE owner = #id#;
+	</select>
+    <select id="getAllOthersProduct" parameterClass="Integer" resultMap="productResultMap">
+	  SELECT *
+      FROM product
+	  WHERE owner != #id#;
+	</select>
+    <insert id="createProduct" parameterClass="Product">
+      INSERT INTO product (name,description,price,stock,owner)
+      VALUES(#name#,#description#,#price#,#stock#,#owner#);
+    </insert>
+
+</sqlMap>

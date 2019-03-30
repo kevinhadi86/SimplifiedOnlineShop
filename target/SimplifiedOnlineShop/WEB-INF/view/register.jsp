@@ -12,12 +12,12 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Register Form</h1>
-    <form:form method="POST" action="register/process" modelAttribute="user">
-        Name: <form:input path="name"/><br>
-        Email: <form:input path="email"/><br>
-        Password: <form:password path="password"/><br>
-        <input type="submit" value="submit">
-    </form:form>
+<h1>Register Form</h1>
+<form:form method="POST" action="register/process" modelAttribute="user">
+    Name: <form:input path="name"/><br>
+    Email: <form:input path="email"/><br>
+    Password: <form:password path="password"/><br>
+    <input type="submit" value="submit">
+</form:form>
 </body>
 </html>

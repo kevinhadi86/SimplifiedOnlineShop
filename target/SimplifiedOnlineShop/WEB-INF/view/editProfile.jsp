@@ -12,13 +12,13 @@
     <title>UPDATE PROFILE</title>
 </head>
 <body>
-    <h2>UPDATE PROFILE</h2>
-    <form:form modelAttribute="user" method="post" action="edit/process">
-        ID: <form:input path="id" disabled="true"/><br>
-        Name: <form:input path="name"/><br>
-        Email: <form:input path="email"/><br>
-        Password: <form:password path="password"/><br>
-        <input type="submit" value="submit">
-    </form:form>
+<h2>UPDATE PROFILE</h2>
+<form:form modelAttribute="user" method="post" action="edit/process">
+    ID: <form:input path="id" disabled="true"/><br>
+    Name: <form:input path="name"/><br>
+    Email: <form:input path="email"/><br>
+    Password: <form:password path="password"/><br>
+    <input type="submit" value="submit">
+</form:form>
 </body>
 </html>
