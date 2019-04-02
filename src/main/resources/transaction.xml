@@ -3,26 +3,62 @@
 <sqlMap namespace="transaction">
 
     <typeAlias alias="Transaction" type="simplified.Online.Shop.dto.Transaction"/>
+    <typeAlias alias="Product" type="simplified.Online.Shop.dto.Product"/>
+    <typeAlias alias="CartItem" type="simplified.Online.Shop.dto.CartItem"/>
 
-    <resultMap id="transactionResultMap" class="PRODUCT">
+    <!--<parameterMap id="detailTransactionParamMap" class="map">-->
+        <!--<parameter property="transactionId"/>-->
+        <!--<parameter property="quantity"/>-->
+        <!--<parameter property="productId"/>-->
+    <!--</parameterMap>-->
+    <resultMap id="transactionResultMap" class="TRANSACTION">
         <result property="id" column="id"/>
         <result property="totalPrice" column="total_price"/>
         <result property="buyerId" column="buyer_id"/>
+        <result property="items" column="id" select="transaction.getItemsByTransactionId"/>
+    </resultMap>
+    <resultMap id="cartItemResultMap" class="CARTITEM">
+        <result property="id" column="id"/>
+        <result property="transactionId" column="transaction_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="product" column="product_id" select="transaction.getProductById"/>
+    </resultMap>
+    <resultMap id="productResultMap" class="PRODUCT">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="description" column="description"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="owner" column="owner"/>
     </resultMap>
 
-    <select id="getAllMyProduct" parameterClass="Integer" resultMap="productResultMap">
+    <select id="getAllTransactionByBuyerId" parameterClass="Integer" resultMap="transactionResultMap">
+	  SELECT *
+      FROM transaction
+      WHERE buyer_id = #id#;
+	</select>
+    <select id="getItemsByTransactionId" parameterClass="Integer" resultMap="cartItemResultMap">
+	  SELECT *
+      FROM detailTransaction
+	  WHERE transaction_id = #id#;
+	</select>
+    <select id="getLastTransaction" resultMap="transactionResultMap">
+        SELECT *
+        FROM transaction
+        ORDER BY id DESC LIMIT 1
+    </select>
+    <select id="getProductById" parameterClass="Integer" resultMap="productResultMap">
 	  SELECT *
       FROM product
-	  WHERE owner = #id#;
+	  WHERE id = #product_id#;
 	</select>
-    <select id="getAllOthersProduct" parameterClass="Integer" resultMap="productResultMap">
-	  SELECT *
-      FROM product
-	  WHERE owner != #id#;
-	</select>
-    <insert id="createProduct" parameterClass="Product">
-      INSERT INTO product (name,description,price,stock,owner)
-      VALUES(#name#,#description#,#price#,#stock#,#owner#);
+    <insert id="createTransaction" parameterClass="Transaction">
+      INSERT INTO transaction (total_price,buyer_id)
+      VALUES(#totalPrice#,#buyerId#);
+    </insert>
+    <insert id="createDetailTransaction" parameterClass="java.util.HashMap" >
+      INSERT INTO detailTransaction (transaction_id,product_id,quantity)
+      VALUES(#transactionId#,#productId#,#quantity#);
     </insert>
 
 </sqlMap>

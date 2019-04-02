@@ -32,7 +32,6 @@ public class HomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLogin(Model model){
-
         model.addAttribute("user",user);
         return "login";
     }
@@ -64,6 +63,11 @@ public class HomeController {
         model.addAttribute("products",productService.getAllMyProduct(user.getId()));
         return "myProduct";
     }
-
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        return "redirect:/";
+    }
 
 }

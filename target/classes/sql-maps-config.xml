@@ -7,5 +7,6 @@
     <settings useStatementNamespaces="true"/>
     <sqlMap resource="user.xml"/>
     <sqlMap resource="product.xml"/>
+    <sqlMap resource="transaction.xml"/>
 
 </sqlMapConfig>

@@ -10,15 +10,35 @@
 <html>
 <head>
     <title>UPDATE PROFILE</title>
+    <title>Home</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<h2>UPDATE PROFILE</h2>
-<form:form modelAttribute="user" method="post" action="edit/process">
-    ID: <form:input path="id" disabled="true"/><br>
-    Name: <form:input path="name"/><br>
-    Email: <form:input path="email"/><br>
-    Password: <form:password path="password"/><br>
-    <input type="submit" value="submit">
-</form:form>
+    <div class="container">
+        <div>
+            <a href="../dashboard"><button class="btn btn-default">Dashboard</button></a>
+            <a href="../logout"><button class="btn btn-danger">Logout</button></a>
+        </div>
+        <hr>
+        <h1>Update Profile</h1>
+        <form:form modelAttribute="user" method="post" action="edit/process">
+            <div class="form-group">
+                ID: <form:input class="form-control" path="id" disabled="true"/>
+            </div>
+            <div class="form-group">
+                Name: <form:input class="form-control" path="name"/><br>
+            </div>
+            <div class="form-group">
+                Email: <form:input class="form-control" path="email"/><br>
+            </div>
+            <div class="form-group">
+                Password: <form:password class="form-control" path="password"/><br>
+            </div>
+            <input class="btn btn-primary" type="submit" value="submit">
+        </form:form>
+    </div>
 </body>
 </html>

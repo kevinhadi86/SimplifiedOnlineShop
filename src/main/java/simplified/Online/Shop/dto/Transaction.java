@@ -1,17 +1,22 @@
 package simplified.Online.Shop.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction {
 
     private int id;
     private int totalPrice;
-    private int buyersId;
-    private List<Product> items;
+    private int buyerId;
+    private List<CartItem> items;
 
-    public Transaction(int totalPrice, int buyersId, List<Product> items) {
+    public Transaction() {
+        items = new ArrayList<>();
+    }
+
+    public Transaction(int totalPrice, int buyerId, List<CartItem> items) {
         this.totalPrice = totalPrice;
-        this.buyersId = buyersId;
+        this.buyerId = buyerId;
         this.items = items;
     }
 
@@ -56,17 +61,17 @@ public class Transaction {
      *
      * @return property value of buyersId
      **/
-    public int getBuyersId() {
-        return buyersId;
+    public int getBuyerId() {
+        return buyerId;
     }
 
     /**
      * Setter method for property buyersId.
      *
-     * @param buyersId value to be assigned to property buyersId
+     * @param buyerId value to be assigned to property buyersId
      */
-    public void setBuyersId(int buyersId) {
-        this.buyersId = buyersId;
+    public void setBuyerId(int buyerId) {
+        this.buyerId = buyerId;
     }
 
     /**
@@ -74,7 +79,7 @@ public class Transaction {
      *
      * @return property value of items
      **/
-    public List<Product> getItems() {
+    public List<CartItem> getItems() {
         return items;
     }
 
@@ -83,7 +88,21 @@ public class Transaction {
      *
      * @param items value to be assigned to property items
      */
-    public void setItems(List<Product> items) {
+    public void setItems(List<CartItem> items) {
         this.items = items;
+    }
+
+    public void addItemToList(CartItem cartItem){
+        items.add(cartItem);
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", totalPrice=" + totalPrice +
+                ", buyerId=" + buyerId +
+                ", items=" + items +
+                '}';
     }
 }

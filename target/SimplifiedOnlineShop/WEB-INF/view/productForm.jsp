@@ -10,14 +10,34 @@
 <html>
 <head>
     <title>Product Form</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-<form:form method="post" modelAttribute="product" action="../add">
-    Name: <form:input path="name"/><br>
-    Description: <form:input path="description"/><br>
-    Price: <form:input path="price"/><br>
-    Stock: <form:input path="stock"/><br>
-    <input type="submit" value="submit">
-</form:form>
+<div class="container">
+    <div>
+        <a href="dashboard"><button class="btn btn-default">Dashboard</button></a>
+        <a href="myProduct"><button class="btn btn-primary">My Product</button></a>
+        <a href="logout"><button class="btn btn-danger">Logout</button></a>
+    </div>
+    <form:form method="post" modelAttribute="product" action="../add">
+        <div class="form-group">
+            Name: <form:input class="form-control" path="name"/><br>
+        </div>
+        <div class="form-group">
+            Description: <form:input class="form-control" path="description"/><br>
+        </div>
+        <div class="form-group">
+            Price: <form:input class="form-control" path="price"/><br>
+        </div>
+        <div class="form-group">
+            Stock: <form:input class="form-control" path="stock"/><br>
+        </div>
+        <input class="btn btn-primary"type="submit" value="submit">
+    </form:form>
+</div>
+
 </body>
 </html>

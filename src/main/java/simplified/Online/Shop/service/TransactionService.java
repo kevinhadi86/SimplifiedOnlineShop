@@ -5,6 +5,7 @@ import simplified.Online.Shop.dto.Transaction;
 import java.util.List;
 
 public interface TransactionService {
-    List<Transaction> getAllTransaction();
+    List<Transaction> getAllTransactionByBuyerId(int id);
     void createTransaction(Transaction transaction);
+    Transaction getLastTransaction();
 }

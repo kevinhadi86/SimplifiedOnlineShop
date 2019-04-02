@@ -22,6 +22,8 @@
     <!--DTO-->
     <bean class="simplified.Online.Shop.dto.User" id="user" scope="singleton"></bean>
     <bean class="simplified.Online.Shop.dto.Product" id="product" scope="singleton"></bean>
+    <bean class="simplified.Online.Shop.dto.CartItem" id="cartItem"></bean>
+    <bean class="simplified.Online.Shop.dto.Transaction" id="transaction"></bean>
 
     <!--DAO-->
     <bean class="simplified.Online.Shop.dao.UserDAOImpl" id="userDAO">
@@ -32,6 +34,10 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="sqlMapClient" ref="sqlMapClient"/>
     </bean>
+    <bean class="simplified.Online.Shop.dao.TransactionDAOImpl" id="transactionDAO">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sqlMapClient" ref="sqlMapClient"/>
+    </bean>
 
     <!--Service-->
     <bean class="simplified.Online.Shop.service.UserServiceImpl" id="userService">
@@ -39,6 +45,9 @@
     </bean>
     <bean class="simplified.Online.Shop.service.ProductServiceImpl" id="productService">
         <property name="productDAO" ref="productDAO"/>
+    </bean>
+    <bean class="simplified.Online.Shop.service.TranscationServiceImpl" id="transcationService">
+        <property name="transactionDAO" ref="transactionDAO"/>
     </bean>
 
     <!--Connection to Database-->
